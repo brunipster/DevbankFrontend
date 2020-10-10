@@ -1,0 +1,58 @@
+@import '~@styles/colors.scss';
+
+.c_accounts__section{
+    padding: 8px 16px;
+}
+
+.c_accounts__balance{
+    & div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.c_accounts__balance{
+    border-bottom: 1px solid black;
+    padding-bottom: 8px;
+}
+
+.c_accounts__balance_total{
+    & h4{
+        margin: 0;
+        font-size: 1.5rem
+    }
+
+    & p{
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+}
+
+.c_accounts__balance_limit{
+    & h4{
+        margin: 0;
+    }
+
+    & p{
+        margin: 0;
+    }
+}
+
+.c_accounts__numbers{
+    padding-top: 8px;
+}
+.c_accounts__share_content{
+    & h4{
+        margin: 0;
+    }
+}
+.c_accounts__share_number{
+    & p{
+        margin: 0;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

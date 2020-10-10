@@ -1,0 +1,42 @@
+@import '~@styles/colors.scss';
+.header{
+    background-color: $color-brown;
+    color:white;
+    & h3{
+        margin:0;
+    }
+}
+
+.accounts{
+    grid-area:accounts;
+}
+.balance{
+    grid-area:balance;
+}
+.transaction{
+    grid-area: transaction;
+}
+
+.exchange{
+    grid-area:exchange;
+}
+.transfer{
+    grid-area:transfer;
+}
+
+.container{
+    display: grid;
+    grid-gap: 5px;
+    height: calc(100vh - 100px);
+    grid-template-areas:
+    'accounts transaction transfer exchange'
+    'accounts transaction transfer exchange' 
+    'accounts transaction balance balance'
+    'accounts transaction balance balance';
+}
+
+
+.container > div{
+    background-color: $color-salmon;
+}
+

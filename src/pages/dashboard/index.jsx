@@ -1,0 +1,28 @@
+import React from 'react';
+import AccountsComponent from '@components/Dashboard/AccountsComponent/';
+import HeaderComponent from '@components/HeaderComponent/';
+import './index.scss';
+export default () => {
+    return (
+        <>
+            <HeaderComponent/>
+            <div class="container">
+                <div class="accounts">
+                    <AccountsComponent/>
+                </div>
+                <div class="balance">
+                    Balance
+                </div>
+                <div class="transaction">
+                    Movimientos
+                </div>
+                <div class="transfer">
+                    Trasnferencias
+                </div>
+                <div class="exchange">
+                    Cambio de Dolares
+                </div>
+            </div>
+        </>
+    )
+}

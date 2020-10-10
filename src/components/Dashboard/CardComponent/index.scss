@@ -1,0 +1,31 @@
+@import '~@styles/colors.scss';
+
+.c_card__container{
+    border: 2px solid $color-blue;
+    border-radius: 24px;
+    padding: 8px 16px;
+}
+
+.c_card__name{
+    margin: 0;
+}
+
+.c_card__chip{
+    width: 48px;
+
+    & svg{
+        fill: $color-blue;
+    }
+}
+
+.c_card__number{
+
+}
+
+.c_card__expired_date{
+
+}
+
+.c_card__brand{
+
+}

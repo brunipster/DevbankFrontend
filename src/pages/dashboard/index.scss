@@ -1,11 +1,4 @@
 @import '~@styles/colors.scss';
-.header{
-    background-color: $color-brown;
-    color:white;
-    & h3{
-        margin:0;
-    }
-}
 
 .accounts{
     grid-area:accounts;
@@ -25,9 +18,12 @@
 }
 
 .container{
+    background-color: $color-gray-5;
     display: grid;
-    grid-gap: 5px;
+    grid-gap: 24px;
+    padding: 24px;
     height: calc(100vh - 100px);
+    height: auto;
     grid-template-areas:
     'accounts transaction transfer exchange'
     'accounts transaction transfer exchange' 
@@ -37,6 +33,9 @@
 
 
 .container > div{
-    background-color: $color-salmon;
+    background-color: white;
+    border-radius: 16px;
+    padding: 8px 16px;
+    // box-shadow: 0 5px 10px 0 $color-secondary;
 }
 

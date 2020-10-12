@@ -1,7 +1,7 @@
 @import '~@styles/colors.scss';
 
-.c_accounts__section{
-    padding: 8px 16px;
+.c_accounts__container{
+    // padding: 8px 16px;
 }
 
 .c_accounts__balance{
@@ -13,28 +13,29 @@
 }
 
 .c_accounts__balance{
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid $color-secondary;
     padding-bottom: 8px;
 }
 
 .c_accounts__balance_total{
     & h4{
-        margin: 0;
+        margin: 8px 0;
         font-size: 1.5rem
     }
 
     & p{
         margin: 0;
         font-size: 1.2rem;
-        font-weight: bold;
     }
 }
 
 .c_accounts__balance_limit{
+    color: $color-gray-40;
     & h4{
         margin: 0;
+        font-weight: normal;
     }
-
+    
     & p{
         margin: 0;
     }
@@ -44,15 +45,52 @@
     padding-top: 8px;
 }
 .c_accounts__share_content{
+    margin: 16px 0;
     & h4{
-        margin: 0;
+        color: $color-gray-40;
+        margin:0;
+        font-weight: normal;
     }
 }
 .c_accounts__share_number{
     & p{
         margin: 0;
+        font-size: 22px;
     }
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.c_accounts__share_button{
+    background-color: $color-secondary;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    
+    &:hover{
+        background-color: $color-blue-40;
+    }
+
+    & svg{
+        margin:auto;
+        width: 20px;
+        fill: white;
+    }
+}
+
+.c_accounts__card_selected{
+    margin: 16px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.c_accounts__card_list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & div{
+        margin: 10px 0px;
+    }
 }

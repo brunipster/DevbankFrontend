@@ -1,5 +1,6 @@
 import React from 'react';
 import AccountsComponent from '@components/Dashboard/AccountsComponent/';
+import MovementsComponent from '@components/Dashboard/MovementsComponent/';
 import HeaderComponent from '@components/HeaderComponent/';
 import './index.scss';
 export default () => {
@@ -14,7 +15,7 @@ export default () => {
                     Balance
                 </div>
                 <div class="transaction">
-                    Movimientos
+                    <MovementsComponent/>
                 </div>
                 <div class="transfer">
                     Trasnferencias

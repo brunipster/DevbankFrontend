@@ -1,14 +1,14 @@
 @import '~@styles/colors.scss';
 
 .c_movements__container{
-    height: 100%;
+    height: calc(100vh - 110px);
 }
 
 .c_movements__list{
     padding: 0;
     padding-right: 10px;
     list-style:  none;
-    height: 100vh;
+    height:calc(100%  - 32px);
     overflow-y: auto;
 }
 

@@ -2,14 +2,15 @@
 
 .accounts{
     grid-area:accounts;
+    min-width: 450px;
 }
 .balance{
     grid-area:balance;
 }
 .transaction{
+    min-width: 400px;
     grid-area: transaction;
 }
-
 .exchange{
     grid-area:exchange;
 }

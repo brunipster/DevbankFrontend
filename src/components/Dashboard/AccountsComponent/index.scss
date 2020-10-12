@@ -2,6 +2,10 @@
 
 .c_accounts__container{
     // padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .c_accounts__balance{
@@ -90,7 +94,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 24px;
     & div{
-        margin: 10px 0px;
+        margin: -8px 0px;
     }
 }

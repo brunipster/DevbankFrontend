@@ -5,7 +5,7 @@ import './index.scss'
 export default (props) =>{
     return (
         <div className="c_transfer__container">
-            <h3>Trasnferencias</h3>
+            <h3>Transferencias</h3>
 
             <div className="c_transfer__accounts_input_group">
                 <label>Cuenta Origen</label>

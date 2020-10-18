@@ -2,8 +2,9 @@ import React from 'react';
 import AccountsComponent from '@components/Dashboard/AccountsComponent/';
 import MovementsComponent from '@components/Dashboard/MovementsComponent/';
 import TranferComponent from '@components/Dashboard/TransferComponent/';
-import BalanceComponent from '@components/Dashboard/BalanceComponent/';
+// import BalanceComponent from '@ExchangeComponentBalanceComponent/';
 import HeaderComponent from '@components/HeaderComponent/';
+import ExchangeComponent from '@components/Dashboard/ExchangeComponent/';
 import './index.scss';
 export default () => {
     return (
@@ -20,10 +21,10 @@ export default () => {
                     <TranferComponent/>
                 </div>
                 <div class="exchange">
-                    Cambio de Dolares
+                    <ExchangeComponent/>
                 </div>
                 <div class="balance">
-                    <BalanceComponent/>
+                    {/* <BalanceComponent/> */}
                 </div>
             </div>
         </>

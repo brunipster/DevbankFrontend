@@ -94,8 +94,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 0px;
     & div{
         margin: -8px 0px;
+
+        &:last-of-type{
+            margin: 0px;
+            margin-top: -8px;
+        }
     }
+}
+.c_accounts__card_list_shadow{
+    margin: 0 auto;
+    height: 10px;
+    background-color:transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    box-shadow: 0px -6px 6px -4px rgba(0, 0, 0, 0.5);
+    margin-top: 0;
 }

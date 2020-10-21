@@ -34,13 +34,16 @@ export default (props) => {
                     </div>
                 </div>
                 <div className="c_accounts__card_selected">
-                    <CardComponent/>
+                    <CardComponent type={1}/>
                 </div>
             </div>
-            <div className="c_accounts__card_list">
-                <CardComponent minimized={true}/>
-                <CardComponent minimized={true}/>
-                <CardComponent minimized={true}/>
+            <div className="c_accounts__cards">
+                <div className="c_accounts__card_list">
+                    <CardComponent type={2} minimized={true}/>
+                    <CardComponent type={3} minimized={true}/>
+                    <CardComponent type={4} minimized={true}/>
+                </div>
+                <div className="c_accounts__card_list_shadow"></div>
             </div>
         </div>
     )

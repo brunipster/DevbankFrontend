@@ -1,12 +1,32 @@
 import React from 'react';
 import {ReactComponent as ChipIcon} from '@icons/chip.svg';
 import {ReactComponent as VisaIcon} from '@icons/visa.svg';
+import {ReactComponent as AmexIcon} from '@icons/amex.svg';
+import {ReactComponent as MastercardIcon} from '@icons/mastercard.svg';
+import {ReactComponent as PaypalIcon} from '@icons/paypal.svg';
 
 import './index.scss'
 
+let types = {
+    1:{
+        brandIcon: <VisaIcon className="c_card__brand"/>
+    },
+    2:{
+        brandIcon: <AmexIcon className="c_card__brand"/>
+    },
+    3:{
+        brandIcon: <MastercardIcon className="c_card__brand"/>
+    },
+    4:{
+        brandIcon: <PaypalIcon className="c_card__brand"/>
+    }
+}
+
 export default (props) => {
+    
+
     return (
-        <div className={`c_card__container ${props.minimized ? "minimized" : ""}`}>
+        <div className={`c_card__container ${props.minimized ? "minimized" : ""} c_card__container_bg_gradient_${props.type || 1}`}>
             <div className="c_card__container_head">
                 <h3 className="c_card__name">Debito Sueldo 
                     {props.minimized &&
@@ -16,7 +36,9 @@ export default (props) => {
                         </>
                     }
                 </h3>
-                <VisaIcon className="c_card__brand"/>
+                {
+                    types[props.type || 1].brandIcon
+                }
             </div>
             {!props.minimized &&
                 <>

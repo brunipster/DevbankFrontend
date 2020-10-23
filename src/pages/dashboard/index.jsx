@@ -9,22 +9,24 @@ import './index.scss';
 export default () => {
     return (
         <>
-            <HeaderComponent/>
-            <div class="container">
-                <div class="accounts">
-                    <AccountsComponent/>
-                </div>
-                <div class="transaction">
-                    <MovementsComponent/>
-                </div>
-                <div class="transfer">
-                    <TranferComponent/>
-                </div>
-                <div class="exchange">
-                    <ExchangeComponent/>
-                </div>
-                <div class="balance">
-                    {/* <BalanceComponent/> */}
+        <HeaderComponent/>
+            <div className="wrapper">
+                <div class="container">
+                    <div class="accounts">
+                        <AccountsComponent/>
+                    </div>
+                    <div class="transaction">
+                        <MovementsComponent/>
+                    </div>
+                    <div class="transfer">
+                        <TranferComponent/>
+                    </div>
+                    <div class="exchange">
+                        <ExchangeComponent/>
+                    </div>
+                    <div class="balance">
+                        {/* <BalanceComponent/> */}
+                    </div>
                 </div>
             </div>
         </>

@@ -1,35 +1,48 @@
 @import '~@styles/colors.scss';
 
-.accounts{
-    grid-area:accounts;
-}
-.balance{
-    grid-area:balance;
-}
-.transaction{
-    grid-area: transaction;
-}
-.exchange{
-    grid-area:exchange;
-}
-.transfer{
-    grid-area:transfer;
+.wrapper{
+    background-color: $color-gray-5;
+    display: grid;
+    justify-content: center;
 }
 
 .container{
-    background-color: $color-gray-5;
     display: grid;
     grid-gap: 24px;
     padding: 24px;
     height: calc(100vh - 100px);
     height: auto;
-    grid-template-areas:
-    'accounts transaction transfer exchange'
-    'accounts transaction transfer exchange' 
-    'accounts transaction balance balance'
-    'accounts transaction balance balance';
+    max-width: 1600px;
+    min-width: 10px;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
 }
 
+.accounts{
+    // grid-area:accounts;
+    grid-column: span 1;
+    grid-row: span 4;
+}
+.transaction{
+    // grid-area: transaction;
+    grid-column: span 1;
+    grid-row: span 4;
+}
+.transfer{
+    // grid-area:transfer;
+    grid-column: span 1;
+    grid-row: span 2;
+}
+.exchange{
+    grid-column: span 1;
+    grid-row: span 2;
+    // grid-area:exchange;
+}
+.balance{
+    // grid-area:balance;
+    grid-column: span 2;
+    grid-row: span 2;
+}
 
 .container > div{
     background-color: white;

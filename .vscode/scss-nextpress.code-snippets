@@ -1,0 +1,17 @@
+{
+	"Media Queries": {
+		"scope": "scss",
+		"prefix": "scss_nextpress",
+		"body": [
+			"@import '~@styles/globals.scss';",
+			"",
+			"@media screen and (min-width: $$breakpoints-sm){}",
+			"",
+			"@media screen and (min-width: $$breakpoints-md){}",
+			"",
+			"@media screen and (min-width: $$breakpoints-lg){}",
+			"",
+			"@media screen and (min-width: $$breakpoints-xl){}"
+		]
+	}
+}

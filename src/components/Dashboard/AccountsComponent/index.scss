@@ -1,4 +1,4 @@
-@import '~@styles/colors.scss';
+@import '~@styles/globals.scss';
 
 .c_accounts__container{
     // padding: 8px 16px;
@@ -24,25 +24,11 @@
 .c_accounts__balance_total{
     & h4{
         margin: 8px 0;
-        font-size: 1.5rem
-    }
-
-    & p{
-        margin: 0;
-        font-size: 1.2rem;
     }
 }
 
 .c_accounts__balance_limit{
     color: $color-gray-40;
-    & h4{
-        margin: 0;
-        font-weight: normal;
-    }
-    
-    & p{
-        margin: 0;
-    }
 }
 
 .c_accounts__numbers{
@@ -52,15 +38,9 @@
     margin: 16px 0;
     & h4{
         color: $color-gray-40;
-        margin:0;
-        font-weight: normal;
     }
 }
 .c_accounts__share_number{
-    & p{
-        margin: 0;
-        font-size: 22px;
-    }
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -85,7 +65,8 @@
 }
 
 .c_accounts__card_selected{
-    margin: 16px auto;
+    margin: 24px auto;
+    margin-bottom: 42px;
     display: flex;
     justify-content: center;
 }
@@ -111,7 +92,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px;
+    // margin: 20px;
     box-shadow: 0px -6px 6px -4px rgba(0, 0, 0, 0.5);
     margin-top: 0;
+}
+
+@import '~@styles/globals.scss';
+
+@media screen and (min-width: $breakpoints-sm){
+    
+}
+
+@media screen and (min-width: $breakpoints-md){
+    
+}
+
+@media screen and (min-width: $breakpoints-lg){
+    
+}
+
+@media screen and (min-width: $breakpoints-xl){
+    
 }

@@ -9,26 +9,26 @@ export default (props) => {
             <div>
                 <div className="c_accounts__balance">
                     <div className="c_accounts__balance_total">
-                        <h4>Saldo</h4>
-                        <p>S/780.00</p>
+                        <h4 className="e-p1">Saldo</h4>
+                        <p className="e-p2 e-p3:md">S/780.00</p>
                     </div>
                     <div className="c_accounts__balance_limit">
-                        <h4>Limite de Credito</h4>
-                        <p>S/1500.00</p>
+                        <h4 className="e-p3 e-p5:md">Limite de Credito</h4>
+                        <p className="e-p4 e-p6:md">S/1500.00</p>
                     </div>
                 </div>
                 <div className="c_accounts__numbers">
                     <div className="c_accounts__share_content">
-                        <h4>Numero de Cuenta:</h4>
+                        <h4 className="e-p4">Numero de Cuenta:</h4>
                         <div className="c_accounts__share_number">
-                            <p>0011-0138-02000546489</p>
+                            <p className="e-p2 e-p5:md">0011-0138-02000546489</p>
                             <button className="c_accounts__share_button"><ShareIcon/></button>
                         </div>
                     </div>
                     <div className="c_accounts__share_content">
-                        <h4>CCI:</h4>
+                        <h4 className="e-p4">CCI:</h4>
                         <div className="c_accounts__share_number">
-                            <p>011-138-02000546489-52</p>
+                            <p className="e-p2 e-p5:md">011-138-02000546489-52</p>
                             <button className="c_accounts__share_button"><ShareIcon/></button>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-@import '~@styles/colors.scss';
+@import '~@styles/globals.scss';
 
 .wrapper{
     background-color: $color-gray-5;
@@ -19,35 +19,50 @@
 }
 
 .accounts{
-    // grid-area:accounts;
     grid-column: span 1;
     grid-row: span 4;
 }
 .transaction{
-    // grid-area: transaction;
     grid-column: span 1;
     grid-row: span 4;
 }
 .transfer{
-    // grid-area:transfer;
     grid-column: span 1;
     grid-row: span 2;
 }
 .exchange{
     grid-column: span 1;
     grid-row: span 2;
-    // grid-area:exchange;
 }
 .balance{
-    // grid-area:balance;
-    grid-column: span 2;
     grid-row: span 2;
+    display: none;
 }
 
 .container > div{
     background-color: white;
     border-radius: 16px;
     padding: 8px 16px;
-    // box-shadow: 0 5px 10px 0 $color-secondary;
 }
 
+@media screen and (min-width: $breakpoints-sm){
+    .balance{
+        display: block;
+    }
+}
+
+@media screen and (min-width: $breakpoints-md){
+    .balance{
+        grid-column: span 3;
+    }
+}
+
+@media screen and (min-width: $breakpoints-lg){
+    .balance{
+        grid-column: span 2;
+    }
+}
+
+@media screen and (min-width: $breakpoints-xl){
+
+}

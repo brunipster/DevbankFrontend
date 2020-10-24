@@ -1,7 +1,6 @@
 import React, {Component,Suspense} from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { routes } from './routes';
-import './App.css';
 
 const loading = () => <div></div>
 

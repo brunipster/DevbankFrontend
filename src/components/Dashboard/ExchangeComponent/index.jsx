@@ -6,10 +6,10 @@ import './index.scss'
 export default () =>{
     return (
         <section className="c_exchange__container">
-            <h3>Cambio de Moneda</h3>
+            <h3 className="e-p1">Cambio de Moneda</h3>
             <div className="c_exchange__titles">
-                <p>Envías</p>
-                <p>Recibes</p>
+                <p className="e-p5">Envías</p>
+                <p className="e-p5">Recibes</p>
             </div>
             <div className="c_exchange__form">
                 <div className="c_exchange__form_currency_origin">

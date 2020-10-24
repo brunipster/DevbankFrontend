@@ -1,14 +1,23 @@
 @mixin bg-gradient-1(){
     background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
-
 @mixin bg-gradient-2(){
     background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
 }
-
 @mixin bg-gradient-3(){
     background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
 }
 @mixin bg-gradient-4(){
     background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+}
+@mixin bg-gradient-inactive(){
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+    background-blend-mode: multiply,multiply;
+}
+
+@mixin bg-gradient(){
+    background: #136a8a;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #267871, #136a8a);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #267871, #136a8a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }

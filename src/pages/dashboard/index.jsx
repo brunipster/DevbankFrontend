@@ -8,8 +8,8 @@ import ExchangeComponent from '@components/Dashboard/ExchangeComponent/';
 import './index.scss';
 export default () => {
     return (
-        <>
-        <HeaderComponent/>
+        <div className="dashboard">
+            <HeaderComponent/>
             <div className="wrapper">
                 <div class="container">
                     <div class="accounts">
@@ -29,6 +29,6 @@ export default () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

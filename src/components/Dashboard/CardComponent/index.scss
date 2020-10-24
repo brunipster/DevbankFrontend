@@ -13,6 +13,9 @@
 .c_card__container_bg_gradient_4{
     @include bg-gradient-4();
 }
+.c_card__container_bg_gradient_inactive{
+    @include bg-gradient-inactive();
+}
 
 .c_card__container{
     // border: 2px solid $color-blue;

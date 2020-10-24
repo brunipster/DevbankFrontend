@@ -1,6 +1,6 @@
 import React from 'react';
 import {ReactComponent as ChipIcon} from '@icons/chip.svg';
-import {ReactComponent as VisaIcon} from '@icons/Visa2.svg';
+import {ReactComponent as VisaIcon} from '@icons/visa.svg';
 import {ReactComponent as AmexIcon} from '@icons/amex.svg';
 import {ReactComponent as MastercardIcon} from '@icons/mastercard.svg';
 import {ReactComponent as PaypalIcon} from '@icons/paypal.svg';

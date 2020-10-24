@@ -8,21 +8,21 @@ export default (props)=>{
 
     return (
         <div className="c_movements__container">
-            <h3>Movimientos</h3>
+            <h3 className="e-p1">Movimientos</h3>
             <ul className="c_movements__list">
                 {
                     list.map((elm)=>(
                         <li className="c_movements__item">
-                            <div className="c_movements__item_description">
+                            <p className="c_movements__item_description e-p2 e-p5:md">
                                 Pago de Netflix
                                 {elm.processing &&
 
-                                    <span className="c_movements__item_description_flag">Procesando</span> 
+                                    <span className="c_movements__item_description_flag e-p5">Procesando</span> 
                                 }
                                 <br/>
-                                <span className="c_movements__item_description_date">12/03 10:30am</span>
-                            </div>
-                            <p className="c_movements__item_mount">S/.45.00</p>
+                                <span className="c_movements__item_description_date e-p6">12/03 10:30am</span>
+                            </p>
+                            <p className="c_movements__item_mount e-p5 e-text-light">S/.45.00</p>
                         </li> 
                     ))
                 }

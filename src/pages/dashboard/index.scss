@@ -1,7 +1,13 @@
 @import '~@styles/globals.scss';
+@import '~@styles/gradients.scss';
+
+.dashboard{
+    // background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    @include bg-gradient();
+}
 
 .wrapper{
-    background-color: $color-gray-5;
+    // background-color: #9689c5;
     display: grid;
     justify-content: center;
 }
@@ -20,29 +26,29 @@
 
 .accounts{
     grid-column: span 1;
-    grid-row: span 4;
+    grid-row: span 2;
 }
 .transaction{
     grid-column: span 1;
-    grid-row: span 4;
+    grid-row: span 2;
 }
 .transfer{
     grid-column: span 1;
-    grid-row: span 2;
+    grid-row: span 1;
 }
 .exchange{
     grid-column: span 1;
-    grid-row: span 2;
+    grid-row: span 1;
 }
 .balance{
-    grid-row: span 2;
+    grid-row: span 1;
     display: none;
 }
 
 .container > div{
     background-color: white;
     border-radius: 16px;
-    padding: 8px 16px;
+    padding: 16px;
 }
 
 @media screen and (min-width: $breakpoints-sm){

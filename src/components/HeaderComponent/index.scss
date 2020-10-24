@@ -2,14 +2,18 @@
 .c_header__section{
     display: flex;
     justify-content: space-between;
+    padding: 0 24px;
     align-items: center;
     height: 50px;
-    background-color: $color-secondary;
+    max-width: 1600px;
+    margin:auto;
+    background-color: transparent;
 }
 
 .c_header__logo{
     font-size: 24px;
     margin:0 8px;
+    color: $color-primary;
 }
 
 .c_header__options{
@@ -19,9 +23,10 @@
     display: flex;
     & li{ 
         padding:0 16px;
-        border-right: 1px solid white;
+        border-right: 1px solid $color-primary;
         &:last-child{
             border-right: none;
+            padding-right:0;
         }
     }
 }
@@ -29,13 +34,13 @@
 .c_header__notificacion_icon{
     & svg{
         width: 25px;
-        fill: white;
+        fill: $color-primary;
     }
 }
 
 .c_header__user_icon{
     & svg{
         width: 25px;
-        fill: white;
+        fill: $color-primary;
     }
 }

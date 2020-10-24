@@ -1,14 +1,14 @@
 @import '~@styles/globals.scss';
 
 .c_movements__container{
-    height: calc(100vh - 110px);
+    // height: calc(100vh - 110px);
 }
 
 .c_movements__list{
     padding: 0;
     padding-right: 10px;
     list-style:  none;
-    height:calc(100%  - 32px);
+    height:calc(100vh  - 190px);
     overflow-y: auto;
 }
 
@@ -16,9 +16,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 18px;
     border-bottom: 1px solid $color-secondary;
-
+    padding: 8px 0;
     &:last-of-type{
         border-bottom: none;
     }
@@ -31,19 +30,8 @@
     border: 1px solid $color-secondary;
     margin: 0 5px;
     border-radius: 3px;
-    font-size: 13px;
 }
 
 .c_movements__item_description_date{
-    font-size: 15px;
-    font-weight: normal;
     color: $color-gray-30;
-}
-
-.c_movements__item_description{
-
-}
-
-.c_movements__item_mount{
-
 }

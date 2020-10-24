@@ -6,7 +6,7 @@ import './index.scss';
 export default () =>{
     return (
         <section className="c_header__section">
-            <div className="c_header__logo e-h4">DevBank</div>
+            <div className="c_header__logo e-h4">DB</div>
             <ul className="c_header__options">
                 <li  className="c_header__notificacion_icon">
                     <NotificationIcon/>

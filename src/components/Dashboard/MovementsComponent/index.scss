@@ -1,4 +1,5 @@
 @import '~@styles/globals.scss';
+@import '~@styles/scrollbar.scss';
 
 .c_movements__container{
     // height: calc(100vh - 110px);
@@ -6,10 +7,11 @@
 
 .c_movements__list{
     padding: 0;
-    padding-right: 10px;
+    padding-right: 6px;
     list-style:  none;
     height:calc(100vh  - 190px);
     overflow-y: auto;
+    @include custom-scrollbar();
 }
 
 .c_movements__item{

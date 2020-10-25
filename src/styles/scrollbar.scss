@@ -1,0 +1,12 @@
+@import '~@styles/colors.scss';
+
+
+@mixin custom-scrollbar(){
+    &::-webkit-scrollbar {
+        width:8px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $color-secondary; 
+        border-radius: 10px;
+    }
+}

@@ -7,37 +7,25 @@ export default () =>{
     return (
         <section className="c_exchange__container">
             <h3 className="e-p1">Cambio de Moneda</h3>
-            <div className="c_exchange__titles">
-                <p className="e-p5">Envías</p>
-                <p className="e-p5">Recibes</p>
-            </div>
-            <div className="c_exchange__form">
-                <div className="c_exchange__form_currency_origin">
-                    <div className="c_exchange__input_group">
-                        {/* <label className="c_exchange__form_label">
-                            Envío
-                        </label> */}
-                        <input type="number" className="c_exchange__form_currency_mount" value={100}/>
-                    </div>
-                    <select className="c_exchange__form_currency_select">
-                        <option value="USD">Dolares</option>
-                        <option value="PEN">Soles</option>
-                    </select>
+            <div className="c_exchange__field">
+                <div className="c_exchange__field_box">
+                    <label className="c_exchange__field_label e-p4 e-p6:md">Envio:</label>
+                    <input className="c_exchange__field_input e-p2 e-p4:md" value="1500"></input>
                 </div>
-                <button className="c_exchange__button_swipe">
-                    <SwipeIcon/>
-                </button>
-                <div className="c_exchange__form_currency_end">
-                    <select className="c_exchange__form_currency_select">
-                        <option value="USD">Dolares</option>
-                        <option value="PEN">Soles</option>
-                    </select>
-                    <div className="c_exchange__input_group">
-                        {/* <label className="c_exchange__form_label">
-                            Recibo
-                        </label> */}
-                        <input type="number" className="c_exchange__form_currency_mount" value={358}/>
-                   </div> 
+                <div className="c_exchange__field_currency">
+                    <p className="c_exchange__field_currency_text e-p3 e-p4:md">Dolares</p>
+                </div>
+            </div>
+            <div className="c_exchange__swipe_currency">
+                <button className="c_exchange__swipe_currency_button"><SwipeIcon/></button>
+            </div>
+            <div className="c_exchange__field">
+                <div className="c_exchange__field_box">
+                    <label className="c_exchange__field_label e-p4 e-p6:md">Recibo:</label>
+                    <input className="c_exchange__field_input e-p2 e-p4:md" value="1500"></input>
+                </div>
+                <div className="c_exchange__field_currency">
+                    <p className="c_exchange__field_currency_text e-p3 e-p4:md">Soles</p>
                 </div>
             </div>
         </section>

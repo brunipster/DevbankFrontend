@@ -1,0 +1,16 @@
+@import '~@styles/globals.scss';
+
+.c_button {
+    background: #136a8a;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &.primary {
+        background: transparent;
+        color: #136a8a;
+        border: 1px solid #136a8a;
+    }
+}

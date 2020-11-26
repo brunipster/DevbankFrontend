@@ -1,0 +1,37 @@
+@import '~@styles/globals.scss';
+@import '~@styles/gradients.scss';
+
+.p_register {
+    height: 100vh;
+    @include bg-gradient();
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p_register__content {
+    background-color: rgba(255,255,255,0.7);
+    padding: 16px;
+    border-radius: 15px;
+}
+
+.p_register__image {
+    text-align: center;
+    margin-top: -60px;
+    & img{
+        height: 100px;
+    }
+}
+
+.p_register__field_box {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0;
+}
+
+.p_register__field_input{
+    border-radius: 8px;
+    border: 1px solid black;
+    padding: 8px;
+    margin-top: 8px;
+}

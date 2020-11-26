@@ -20,9 +20,9 @@ export default (props)=>{
                                     <span className="c_movements__item_description_flag e-p5">Procesando</span> 
                                 }
                                 <br/>
-                                <span className="c_movements__item_description_date e-p6">12/03 10:30am</span>
+                                <span className="c_movements__item_description_date e-p4 e-p6:md">12/03 10:30am</span>
                             </p>
-                            <p className="c_movements__item_mount e-p5 e-text-light">S/.45.00</p>
+                            <p className="c_movements__item_mount e-p3 e-p5:md e-text-light">S/.45.00</p>
                         </li> 
                     ))
                 }

@@ -1,7 +1,9 @@
 import React from 'react';
 
+import './index.scss';
+
 export default () => {
     return (
-        <h2>Login</h2>
+        <div></div>
     )
 }

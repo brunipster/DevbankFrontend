@@ -21,7 +21,7 @@ export default (props) =>{
 
             <div className="c_transfer__footer">
                 <input type="checkbox" name="" id=""/><label className="e-p4 e-p6:md">Acepto los terminos y condiciones</label>
-                <button className="c_transfer__button e-p6">Transferir</button>
+                <button className="c_transfer__button e-p3 e-p6:md">Transferir</button>
             </div>
 
         </div>

@@ -1,7 +1,9 @@
 @import '~@styles/globals.scss';
+
 .c_header__section{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0 24px;
     align-items: center;
     height: 50px;
@@ -14,6 +16,15 @@
     font-size: 24px;
     margin:0 8px;
     color: $color-primary;
+}
+
+.c_header__navbar_item{
+    color: white;
+    border: 1px solid white;
+    padding: 8px;
+    margin: 0 8px !important;
+    border-radius: 5px;
+    text-decoration: none;
 }
 
 .c_header__options{

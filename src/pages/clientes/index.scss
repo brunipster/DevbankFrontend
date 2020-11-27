@@ -1,0 +1,74 @@
+@import '~@styles/globals.scss';
+@import '~@styles/gradients.scss';
+
+.p_cliente{
+    @include bg-gradient();
+    min-height: 100vh;
+    padding-bottom: 16px;
+}
+
+.p_cliente__list{
+    background: rgba(255,255,255,0.7);
+    width:80%;
+    border-radius: 15px;
+    padding: 16px;
+    margin: 32px auto;
+}
+
+.p_cliente__list_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.p_cliente__list_header_new {
+    background: transparent;
+    border: 2px solid black;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.p_cliente__table{
+    color: black;
+    width: 100%;
+    margin: 16px 0;
+    font-family: "Ubuntu_Regular";
+    font-size: 18px;
+    border-collapse: collapse;
+}
+
+.p_cliente__table_head {
+    font-weight: bold;
+}
+
+.p_cliente__table_body {
+    & tr {
+        border: solid;
+        border-width: 1px 0;
+    }
+}
+
+.p_cliente__field_box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    &:last-of-type {
+        margin-bottom: 0px;
+    }
+}
+
+.p_cliente__field_label {
+    font-weight: bold;
+}
+.p_cliente__field_select {
+    padding: 6px;
+}
+
+.p_cliente__modal_buttons{
+    text-align: right;
+    & button {
+        margin: 0 8px;
+    }
+}

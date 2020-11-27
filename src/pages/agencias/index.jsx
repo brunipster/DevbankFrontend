@@ -16,7 +16,7 @@ export default () => {
     }
 
     function crearSubmit() {
-        console.log("fprm", form);
+        console.log("form", form);
     }
 
     function handleForm(event) {

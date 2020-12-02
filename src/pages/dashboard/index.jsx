@@ -11,20 +11,20 @@ export default () => {
         <div className="dashboard">
             <HeaderComponent/>
             <div className="wrapper">
-                <div class="container">
-                    <div class="accounts">
+                <div className="container">
+                    <div className="accounts">
                         <AccountsComponent/>
                     </div>
-                    <div class="transaction">
+                    <div className="transaction">
                         <MovementsComponent/>
                     </div>
-                    <div class="transfer">
+                    <div className="transfer">
                         <TranferComponent/>
                     </div>
-                    <div class="exchange">
+                    <div className="exchange">
                         <ExchangeComponent/>
                     </div>
-                    <div class="balance">
+                    <div className="balance">
                         {/* <BalanceComponent/> */}
                     </div>
                 </div>

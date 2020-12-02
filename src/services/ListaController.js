@@ -19,4 +19,7 @@ export default {
   async getCuentas() {
     return api.get("/cuenta/listar");
   },
+  async getCuentas() {
+    return api.get("/cuenta/listar");
+  },
 };

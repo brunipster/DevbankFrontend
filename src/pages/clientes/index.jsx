@@ -71,7 +71,8 @@ export default () => {
     useEffect(() => {
         ListaController.getTipoDocumento().then(({data}) => {
             const result = data.data;
-            setTiposDocumento(result);
+            setTiposDocumento([{tdocId:1, tdoc_descripcion: "DNI"}, {tdocId:2,tdoc_descripcion:  "CARNET DE EXTRANJERÍA"}]);
+            //setTiposDocumento(result);
         })
     }, [])
 
@@ -158,7 +159,7 @@ export default () => {
                             { tiposDocumento &&
                                 tiposDocumento.map((documento) => {
                                     return (
-                                        <option value={documento.tdocId}>{documento.tdocDescripcion}</option>
+                                        <option value={documento.tdocId}>{documento.tdoc_descripcion}</option>
                                     )
                                 })
                             }

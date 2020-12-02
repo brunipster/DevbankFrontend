@@ -7,7 +7,10 @@ import ListaController from '@services/ListaController/';
 import ClienteController from '@services/ClienteController/';
 import {ReactComponent as EditIcon} from '@icons/edit.svg'
 import './index.scss';
+import InputMask from 'react-input-mask';
+
 const {useState, useEffect} = React;
+
 
 export default () => {
     
@@ -15,39 +18,31 @@ export default () => {
     const [showModalSuccess, setShowModalSuccess] = useState(false);
     const [showModalError, setShowModalError] = useState(false);
     const [form, setForm] = useState(false);
-    const [tiposDocumento, setTiposDocumento] = useState(false);
-    
+    const [tipoCuenta, setTipoCuenta] = useState(false);
+    const [cuentas, setCuentas] = useState(false);
+    const [productos, setProductos] = useState(false);
+
     function crear(){
         setShowModal(true);
     }
 
     function crearSubmit() {
         const body = {
-            cliente: {
-                agencia: {
-                    agenId: 1
+            cuenta: {
+                ctaNuCuenta: "10000000",
+                ctaNuCuentaCci: "04410000000",
+                ctaSaldo: 1000,
+                ctaEstId: 1,
+                tipoCuenta: {
+                    tctaId: 1
                 },
-                cliApeMaterno: form.apellidoMaterno,
-                cliApePaterno: form.apellidoPaterno,
-                cliCorrreo: form.correo,
-                cliDireccion: form.direccion,
-                cliFecNac: '2020-12-02T00:08:53.114Z',
-                cliNombres: form.nombres,
-                cliNumCelular: form.celular,
-                cliNumDocumento: form.numeroDocumento,
-                
-                tipoDocumento: {
-                    tdocId: form.tipoDocumento
+                usuario: {
+                    usuId: 1
+                },
+                producto: {
+                    prodId: 1
                 }
-            },
-            roles: [
-                {
-                    rolId: 2,
-                }
-            ],
-            usuClave: form.clave,
-            usuEstado: 1,
-            usuNombre: `${form.nombres} ${form.apellidoPaterno} ${form.apellidoMaterno}`
+            }
         }
         ClienteController.postRegister(body).then((result) => {
             if(result.status === 200){
@@ -69,37 +64,62 @@ export default () => {
     }
 
     useEffect(() => {
-        ListaController.getTipoDocumento().then(({data}) => {
+        ListaController.getTipoCuenta().then(({data}) => {
             const result = data.data;
-            setTiposDocumento([{tdocId:1, tdoc_descripcion: "DNI"}, {tdocId:2,tdoc_descripcion:  "CARNET DE EXTRANJERÍA"}]);
-            //setTiposDocumento(result);
+            setTipoCuenta(result);
+        })
+
+        ListaController.getCuentas().then(({data}) => {
+            const result = data.data;
+            setCuentas(result);
+        })
+
+        ListaController.getProductos().then(({data}) => {
+            const result = data.data;
+            console.log(result)
+            setProductos(result);
         })
     }, [])
+
 
     return (
         <div className="p_cuentas">
             <HeaderComponent/>
             <div className="p_cuentas__list">
                 <div className="p_cuentas__list_header">
-                    <h2 className="e-h6">Clientes</h2>
+                    <h2 className="e-h6">Cuentas</h2>
                     <button onClick={()=>{crear()}} className="p_cuentas__list_header_new e-p6">Nuevo</button>
                 </div>
                 <table className="p_cuentas__table">
                     <thead className="p_cuentas__table_head">
                         <tr>
-                            <td>Id</td>
-                            <td>Numero Completo</td>
-                            <td>Correo</td>
-                            <td>Direccion</td>
-                            <td>Celular</td>
-                            <td>Tipo de Documento</td>
-                            <td>Numero de Documento</td>
-                            <td>Estado</td>
+                            <td>Numero Cuenta</td>
+                            <td>Numero Cuenta CCI</td>
+                            <td>Saldo</td>
+                            <td>Tipo Cuenta</td>
                             <td></td>
                         </tr>
                     </thead>
                     <tbody className="p_cuentas__table_body">
-                        <tr>
+
+                   { cuentas &&
+                                cuentas.map((c) => {
+                                    return (
+                                        <tr value={c.ctaId}>                                        
+                                        <td>{c.ctaNuCuenta}</td>
+                                        <td>{c.ctaNuCuentaCci}</td>
+                                        <td>{c.ctaSaldo}</td>
+                                        <td>{c.tipoCuenta.tctaDescripcion}</td>
+                                        {/* <td>{c.ctaNuCuentaCci}</td>
+                                        <td>{c.ctaNuCuentaCci}</td>
+                                        <td>{c.ctaNuCuentaCci}</td> */}
+                                        <td><EditIcon height="20px"/></td> 
+                                        
+                                        </tr>
+                                    )
+                                })
+                            }
+                        {/* <tr>
                             <td>123</td>
                             <td>Bruno Reyes</td>
                             <td>brunorebu12@gmail.com</td>
@@ -108,7 +128,7 @@ export default () => {
                             <td>70287443</td>
                             <td>APROBADO</td>
                             <td><EditIcon height="20px"/></td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
             </div>
@@ -125,53 +145,64 @@ export default () => {
             >
                 <form>
                     <div className="p_cuentas__field_box">
-                        <label className="p_cuentas__field_label e-p4 e-p6:md">Nombres:</label>
-                        <input name="nombres" onChange={handleForm} className="p_cuentas__field_input e-p2 e-p4:md"></input>
+                        <label className="p_cuentas__field_label e-p4 e-p6:md">Número de cuenta:</label>
+                        {/* <input name="ctaNuCuenta" onChange={handleForm} className="p_cuentas__field_input e-p2 e-p4:md"></input> */}
+                        <InputMask name="ctaNuCuenta"  mask="9999 9999 9999 99" maskChar=" " onChange={handleForm} className="p_cuentas__field_input e-p2 e-p4:md" />
                     </div>
                     <div className="p_cuentas__field_box">
-                        <label className="p_cuentas__field_label e-p4 e-p6:md">Apellido Paterno:</label>
-                        <input name="apellidoPaterno" onChange={handleForm} className="p_cuentas__field_input e-p2 e-p4:md"></input>
+                        <label className="p_cuentas__field_label e-p4 e-p6:md">Número de Cuenta CCI:</label>
+                        {/* <input name="ctaNuCuentaCci" onChange={handleForm} className="p_cuentas__field_input e-p2 e-p4:md"></input> */}
+                        <InputMask name="ctaNuCuentaCci" mask="0\4\9 9999 9999 9999 99" maskChar=" " onChange={handleForm} className="p_cuentas__field_input e-p2 e-p4:md" />
                     </div>
+
                     <div className="p_cuentas__field_box">
-                        <label className="p_cuentas__field_label e-p4 e-p6:md">Apellido Materno:</label>
-                        <input name="apellidoMaterno" onChange={handleForm} className="p_cuentas__field_input e-p2 e-p4:md"></input>
-                    </div>
-                    <div className="p_cuentas__field_box">
-                        <label className="p_cuentas__field_label e-p4 e-p6:md">Correo:</label>
-                        <input name="correo" onChange={handleForm} className="p_cuentas__field_input e-p2 e-p4:md"></input>
-                    </div>
-                    <div className="p_cuentas__field_box">
-                        <label className="p_cuentas__field_label e-p4 e-p6:md">Clave:</label>
-                        <input name="clave" onChange={handleForm} type="password" className="p_cuentas__field_input e-p2 e-p4:md"></input>
-                    </div>
-                    <div className="p_cuentas__field_box">
-                        <label className="p_cuentas__field_label e-p4 e-p6:md">Dirección:</label>
+                        <label className="p_cuentas__field_label e-p4 e-p6:md">Saldo:</label>
                         <input name="direccion" onChange={handleForm} className="p_cuentas__field_input e-p2 e-p4:md"></input>
                     </div>
+
                     <div className="p_cuentas__field_box">
-                        <label className="p_cuentas__field_label e-p4 e-p6:md">Celular:</label>
-                        <input name="celular" onChange={handleForm} className="p_cuentas__field_input e-p2 e-p4:md"></input>
-                    </div>
-                    <div className="p_cuentas__field_box">
-                        <label className="p_cuentas__field_label e-p4 e-p6:md">Tipo de Documento:</label>
+                        <label className="p_cuentas__field_label e-p4 e-p6:md">Tipo de Cuenta:</label>
                         <select name="tipoDocumento" onChange={handleForm} className="p_cuentas__field_select e-p6">
                             <option value="">Seleccionar</option>
-                            { tiposDocumento &&
-                                tiposDocumento.map((documento) => {
+                            { tipoCuenta &&
+                                tipoCuenta.map((tpcuenta) => {
                                     return (
-                                        <option value={documento.tdocId}>{documento.tdoc_descripcion}</option>
+                                        <option value={tpcuenta.tctaId}>{tpcuenta.tctaDescripcion}</option>
                                     )
                                 })
                             }
                         </select>
                     </div>
                     <div className="p_cuentas__field_box">
-                        <label className="p_cuentas__field_label e-p4 e-p6:md">Numero de Documento:</label>
-                        <input name="numeroDocumento" onChange={handleForm} className="p_cuentas__field_input e-p2 e-p4:md"></input>
+                        <label className="p_cuentas__field_label e-p4 e-p6:md">Productos:</label>
+                        <select name="tipoDocumento" onChange={handleForm} className="p_cuentas__field_select e-p6">
+                            <option value="">Seleccionar</option>
+                            { productos &&
+                                productos.map((p) => {
+                                    return (
+                                        <option value={p.prodId}>{p.prodDescripcion}</option>
+                                    )
+                                })
+                            }
+                        </select>
                     </div>
                     <div className="p_cuentas__field_box">
+                        <label className="p_cuentas__field_label e-p4 e-p6:md">Usuario:</label>
+                        <select name="tipoDocumento" onChange={handleForm} className="p_cuentas__field_select e-p6">
+                            <option value="">Seleccionar</option>
+                            { productos &&
+                                productos.map((p) => {
+                                    return (
+                                        <option value={p.prodId}>{p.prodDescripcion}</option>
+                                    )
+                                })
+                            }
+                        </select>
+                    </div>
+
+                    <div className="p_cuentas__field_box">
                         <label className="p_cuentas__field_label e-p4 e-p6:md">Estado:</label>
-                        <select name="estado" onChange={handleForm} className="p_cuentas__field_select e-p6">
+                        <select name="ctaEstId" onChange={handleForm} className="p_cuentas__field_select e-p6">
                             <option value="1">ACTIVO</option>
                             <option value="0">INACTIVO</option>
                         </select>

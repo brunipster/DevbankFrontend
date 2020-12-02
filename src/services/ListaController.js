@@ -17,6 +17,6 @@ export default {
     return api.get("/listar/tipoMoneda");
   },
   async getCuentas() {
-    return api.get("/listar/tipoMoneda");
+    return api.get("/cuenta/listar");
   },
 };

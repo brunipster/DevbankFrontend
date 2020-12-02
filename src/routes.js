@@ -11,6 +11,7 @@ const Register = React.lazy(() => import("./pages/register"));
 const Clientes = React.lazy(() => import("./pages/clientes"));
 const Productos = React.lazy(() => import("./pages/productos"));
 const Agencias = React.lazy(() => import("./pages/agencias"));
+const Cuentas = React.lazy(() => import("./pages/cuentas"));
 
 // handle auth and authorization
 
@@ -44,6 +45,7 @@ const routes = [
   { path: "/clientes", name: "Clientes", component: Clientes, route: Route },
   { path: "/productos", name: "Productos", component: Productos, route: Route },
   { path: "/agencias", name: "Agencias", component: Agencias, route: Route },
+  { path: "/cuentas", name: "Cuentas", component: Cuentas, route: Route },
 
   // other pages
   {

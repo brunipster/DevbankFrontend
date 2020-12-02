@@ -12,7 +12,7 @@ const {useState, useEffect} = React;
 export default () => {
     
     const [showModal, setShowModal] = useState(false);
-    const [showModalSuccess, setShowModalSuccess] = useState(true);
+    const [showModalSuccess, setShowModalSuccess] = useState(false);
     const [showModalError, setShowModalError] = useState(false);
     const [form, setForm] = useState(false);
     const [tiposDocumento, setTiposDocumento] = useState(false);

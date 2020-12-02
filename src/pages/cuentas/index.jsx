@@ -5,7 +5,7 @@ import ButtonComponent from '@components/ButtonComponent/';
 
 import ListaController from '@services/ListaController/';
 import ClienteController from '@services/ClienteController/';
-import {ReactComponent as EditIcon} from '@icons/edit.svg'
+import {ReactComponent as EditIcon} from '@icons/edit.svg';
 import './index.scss';
 import InputMask from 'react-input-mask';
 

@@ -17,4 +17,9 @@ export default {
     //params.append(JSON.stringify(body));
     return api.post("/oauth/token", qs.stringify(body));
   },
+  async postProcesarSolicitud(body) {
+    //const params = new URLSearchParams();
+    //params.append(JSON.stringify(body));
+    return api.post("/api/solicitud/procesar", qs.stringify(body));
+  },
 };

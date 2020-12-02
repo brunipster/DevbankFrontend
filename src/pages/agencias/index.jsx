@@ -3,14 +3,15 @@ import HeaderComponent from '@components/HeaderComponent/';
 import ModalComponent from '@components/ModalComponent/';
 import ButtonComponent from '@components/ButtonComponent/';
 import {ReactComponent as EditIcon} from '@icons/edit.svg'
+import ListaController from '@services/ListaController/';
 import './index.scss';
-const {useState} = React;
+const {useState, useEffect} = React;
 
 export default () => {
     
     const [showModal, setShowModal] = useState(false);
     const [form, setForm] = useState(false);
-    
+    const [agencias, setAgencias] = useState(false);
     function crear(){
         setShowModal(true);
     }
@@ -24,7 +25,12 @@ export default () => {
         let inputValue = event.target.value;
         setForm({...form, [inputName]: inputValue})
     }
-
+    useEffect(() => {
+        ListaController.getAgencias().then(({data}) => {
+            const result = data.data;
+            setAgencias(result);
+        })
+    }, [])
 
     return (
         <div className="p_agencias">
@@ -37,97 +43,27 @@ export default () => {
                 <table className="p_agencias__table">
                     <thead className="p_agencias__table_head">
                         <tr>
-                            <td>Numero de Cuenta</td>
-                            <td>CCI</td>
-                            <td>Saldo</td>
+                            <td>ID</td>
+                            <td>Descripción</td>
+                            <td>Dirección</td>
                             <td>Estado</td>
-                            <td>Tipo</td>
-                            <td>Usuario</td>
-                            <td>Producto</td>
                             <td></td>
                         </tr>
                     </thead>
                     <tbody className="p_agencias__table_body">
-                        <tr>
-                            <td>48580293840221</td>
-                            <td>123485802938402217976</td>
-                            <td>S/.4500</td>
-                            <td>Activo</td>
-                            <td>Debito</td>
-                            <td>Bruno Reyes</td>
-                            <td>LatamPass</td>
-                            <td><EditIcon height="20px"/></td>
-                        </tr>
-                        <tr>
-                            <td>48580293840221</td>
-                            <td>123485802938402217976</td>
-                            <td>S/.4500</td>
-                            <td>Activo</td>
-                            <td>Debito</td>
-                            <td>Bruno Reyes</td>
-                            <td>LatamPass</td>
-                            <td><EditIcon height="20px"/></td>
-                        </tr>
-                        <tr>
-                            <td>48580293840221</td>
-                            <td>123485802938402217976</td>
-                            <td>S/.4500</td>
-                            <td>Activo</td>
-                            <td>Debito</td>
-                            <td>Bruno Reyes</td>
-                            <td>LatamPass</td>
-                            <td><EditIcon height="20px"/></td>
-                        </tr>
-<tr>
-                            <td>48580293840221</td>
-                            <td>123485802938402217976</td>
-                            <td>S/.4500</td>
-                            <td>Activo</td>
-                            <td>Debito</td>
-                            <td>Bruno Reyes</td>
-                            <td>LatamPass</td>
-                            <td><EditIcon height="20px"/></td>
-                        </tr>
-<tr>
-                            <td>48580293840221</td>
-                            <td>123485802938402217976</td>
-                            <td>S/.4500</td>
-                            <td>Activo</td>
-                            <td>Debito</td>
-                            <td>Bruno Reyes</td>
-                            <td>LatamPass</td>
-                            <td><EditIcon height="20px"/></td>
-                        </tr>
-<tr>
-                            <td>48580293840221</td>
-                            <td>123485802938402217976</td>
-                            <td>S/.4500</td>
-                            <td>Activo</td>
-                            <td>Debito</td>
-                            <td>Bruno Reyes</td>
-                            <td>LatamPass</td>
-                            <td><EditIcon height="20px"/></td>
-                        </tr>
-<tr>
-                            <td>48580293840221</td>
-                            <td>123485802938402217976</td>
-                            <td>S/.4500</td>
-                            <td>Activo</td>
-                            <td>Debito</td>
-                            <td>Bruno Reyes</td>
-                            <td>LatamPass</td>
-                            <td><EditIcon height="20px"/></td>
-                        </tr>
-<tr>
-                            <td>48580293840221</td>
-                            <td>123485802938402217976</td>
-                            <td>S/.4500</td>
-                            <td>Activo</td>
-                            <td>Debito</td>
-                            <td>Bruno Reyes</td>
-                            <td>LatamPass</td>
-                            <td><EditIcon height="20px"/></td>
-                        </tr>
+                    { agencias &&
+                                agencias.map((a) => {
+                                    return (
+                                        <tr value={a.agenId}>                                        
+                                        <td>{a.agenId}</td>
+                                        <td>{a.agenDescripcion}</td>
+                                        <td>{a.agenDireccion}</td>
+                                        <td>{(a.agenEstado == "1") ? "Activo" : "Desactivado"}</td>
+                                        <td><EditIcon height="20px"/></td>
+                                        </tr>
+                                    )
+                                })
+                            }
 
                     </tbody>
                 </table>
@@ -144,34 +80,20 @@ export default () => {
                 }
             >
                 <div className="p_agencias__field_box">
-                    <label className="p_agencias__field_label e-p4 e-p6:md">Numero de Cuenta:</label>
-                    <input name="nrocuenta" onChange={handleForm} className="p_agencias__field_input e-p2 e-p4:md"></input>
+                    <label className="p_agencias__field_label e-p4 e-p6:md">Descripción:</label>
+                    <input name="agenDescripcion" onChange={handleForm} className="p_agencias__field_input e-p2 e-p4:md"></input>
                 </div>
                 <div className="p_agencias__field_box">
-                    <label className="p_agencias__field_label e-p4 e-p6:md">CCI:</label>
-                    <input name="cci" onChange={handleForm} className="p_agencias__field_input e-p2 e-p4:md"></input>
+                    <label className="p_agencias__field_label e-p4 e-p6:md">Dirección:</label>
+                    <input name="agenDireccion" onChange={handleForm} className="p_agencias__field_input e-p2 e-p4:md"></input>
                 </div>
                 <div className="p_agencias__field_box">
-                    <label className="p_agencias__field_label e-p4 e-p6:md">Tipo de Cuenta:</label>
-                    <select name="tipocuenta" onChange={handleForm} className="p_agencias__field_select e-p6">
-                        <option value="4">Debito Sueldo S/.1500</option>
-                        <option value="5">Debito Sueldo S/.1500</option>
-                    </select>
-                </div>
-                <div className="p_agencias__field_box">
-                    <label className="p_agencias__field_label e-p4 e-p6:md">Usuario:</label>
-                    <select name="usuario" onChange={handleForm} className="p_agencias__field_select e-p6">
-                        <option value="4">Debito Sueldo S/.1500</option>
-                        <option value="5">Debito Sueldo S/.1500</option>
-                    </select>
-                </div>
-                <div className="p_agencias__field_box">
-                    <label className="p_agencias__field_label e-p4 e-p6:md">Producto:</label>
-                    <select name="producto" onChange={handleForm} className="p_agencias__field_select e-p6">
-                        <option value="4">Debito Sueldo S/.1500</option>
-                        <option value="5">Debito Sueldo S/.1500</option>
-                    </select>
-                </div>
+                        <label className="p_agencias__field_label e-p4 e-p6:md">Estado:</label>
+                        <select name="agenEstado" onChange={handleForm} className="p_agencias__field_select e-p6">
+                            <option value="1">ACTIVO</option>
+                            <option value="0">INACTIVO</option>
+                        </select>
+                    </div>
             </ModalComponent>
         </div>
     )

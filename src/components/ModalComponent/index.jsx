@@ -20,10 +20,12 @@ export default (props) => {
     return (
         <div className={`c_modal__wrapper ${show ? '':'hide'}`}>
             <div className="c_modal">
-                <div className="c_modal__header">
-                    <h3 className="c_modal__header_title e-p1">{ props.title }</h3>
-                    <CloseIcon className="c_modal__header_close" onClick={onCloseModal}/>
-                </div>
+                {props.title &&
+                    <div className="c_modal__header">
+                        <h3 className="c_modal__header_title e-p1">{ props.title }</h3>
+                        <CloseIcon className="c_modal__header_close" onClick={onCloseModal}/>
+                    </div>
+                }
                 <div className="c_modal__body">
                     { props.children }
                 </div>

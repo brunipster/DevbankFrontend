@@ -2,7 +2,7 @@ import React from 'react';
 
 import './index.scss'
 
-export default () => {
+export default (props) => {
     return (
         <div className="p_register">
             <div className="p_register__content">

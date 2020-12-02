@@ -2,12 +2,12 @@ import React from 'react';
 
 import './index.scss'
 
-export default () => {
+export default (props) => {
     return (
         <div className="p_login">
             <div className="p_login__content">
                 <div className="p_login__image">
-                    <img src="./images/user.png"></img>
+                    <img src="./images/user.png" alt="login_user"></img>
                 </div>
                 <h3 className="e-p1">Ingresar</h3>
                 <div className="p_login__form">

@@ -1,48 +1,50 @@
-@import '~@styles/globals.scss';
+@import "~@styles/globals.scss";
 
-.c_modal__wrapper{
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.144);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.c_modal__wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.144);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    &.hide {
-        display: none;
-    }
+  &.hide {
+    display: none;
+  }
 }
 
 .c_modal {
-    min-width: 40%;
-    max-width: 70%;
-    max-height: 80%;
-    background: white;
-    border-radius: 15px;
-    padding: 16px;
+  min-width: 40%;
+  max-width: 70%;
+  max-height: 80%;
+  background: white;
+  border-radius: 15px;
+  padding: 16px;
 }
 
 .c_modal__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 8px;
-    border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid black;
 }
 
 .c_modal__header_close {
-    height: 20px;
-    cursor: pointer;
+  height: 20px;
+  cursor: pointer;
 }
 
-.c_modal__body{
-    padding: 16px 0;
+.c_modal__body {
+  padding: 16px 0;
+  max-height: 50vh;
+  overflow: auto;
 }
 
-.c_modal__footer{
-    padding-top: 8px;
-    border-top: 1px solid black;
+.c_modal__footer {
+  padding-top: 8px;
+  border-top: 1px solid black;
 }

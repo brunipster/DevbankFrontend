@@ -2,6 +2,7 @@ import React from 'react';
 import HeaderComponent from '@components/HeaderComponent/';
 import ModalComponent from '@components/ModalComponent/';
 import ButtonComponent from '@components/ButtonComponent/';
+
 import ListaController from '@services/ListaController/';
 import ClienteController from '@services/ClienteController/';
 import {ReactComponent as EditIcon} from '@icons/edit.svg'
@@ -11,7 +12,7 @@ const {useState, useEffect} = React;
 export default () => {
     
     const [showModal, setShowModal] = useState(false);
-    const [showModalSuccess, setShowModalSuccess] = useState(true);
+    const [showModalSuccess, setShowModalSuccess] = useState(false);
     const [showModalError, setShowModalError] = useState(false);
     const [form, setForm] = useState(false);
     const [tiposDocumento, setTiposDocumento] = useState(false);
@@ -70,7 +71,8 @@ export default () => {
     useEffect(() => {
         ListaController.getTipoDocumento().then(({data}) => {
             const result = data.data;
-            setTiposDocumento(result);
+            setTiposDocumento([{tdocId:1, tdoc_descripcion: "DNI"}, {tdocId:2,tdoc_descripcion:  "CARNET DE EXTRANJERÍA"}]);
+            //setTiposDocumento(result);
         })
     }, [])
 
@@ -157,7 +159,7 @@ export default () => {
                             { tiposDocumento &&
                                 tiposDocumento.map((documento) => {
                                     return (
-                                        <option value={documento.tdocId}>{documento.tdocDescripcion}</option>
+                                        <option value={documento.tdocId}>{documento.tdoc_descripcion}</option>
                                     )
                                 })
                             }

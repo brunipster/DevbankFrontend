@@ -14,7 +14,7 @@ export default (props) => {
     }
 
     return (
-        <button onClick={()=>{clickEvent()}} className={`c_button ${props.theme}`}>
+        <button onClick={()=>{clickEvent()}} className={`c_button ${props.theme}`} disabled={props.isLoading}>
             {!props.isLoading ?
                 props.children
                 :

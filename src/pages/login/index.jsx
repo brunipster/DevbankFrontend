@@ -3,7 +3,6 @@ import ButtonComponent from '@components/ButtonComponent/';
 import SeguridadController from '@services/SeguridadController/';
 import ModalComponent from '@components/ModalComponent/';
 import './index.scss'
-import { Redirect } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 
 
@@ -12,22 +11,20 @@ const {useState, useEffect} = React;
 export default (props) => {
     const [form, setForm] = useState(false);
     const [showModalError, setShowModalError] = useState(false);
-    const [loged, setLoged] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [disabledForm, setDisabledForm] = useState(false);
     const history = useHistory();
 
-      const renderRedirect = () => {
-        if (loged) {
-          return <Redirect to='/target' />
+    const redirectDashboard = () => {
+        history.push('/dashboard');
+    }
+
+    useEffect(() => {
+        console.log(sessionStorage.getItem("token"));
+        if(sessionStorage.getItem("token") && sessionStorage.getItem("token").length > 0) {
+            history.push('/dashboard');
         }
-      }
-
-      const redirectDashboard = () => {
-        history.push(props.link);
-      }
-
-      useEffect(() => {
-
-        },[loged])
+    },[])
 
     function loginSubmit() {
         const body = {
@@ -35,22 +32,21 @@ export default (props) => {
                 password: form.password,
                 grant_type: "password"
         }
-
-        console.log(body);
+        setIsLoading(true);
+        setDisabledForm(true);
         SeguridadController.postLogin(body).then((result) => {
             if(result.status === 200){
                 setForm({});
-                // setShowModal(false);
                 console.log(result);
-                //setLoged(true);
-                window.location.href = "/dashboard"
-                //renderRedirect()
-                // setShowModalSuccess(true);
+                sessionStorage.setItem("token", result.data.access_token);
+                redirectDashboard();
             }
         }).catch((error) => {
             console.log('Error', error);
-            //setShowModal(false);
             setShowModalError(true);
+        }).finally(() => {
+            setIsLoading(false);
+            setDisabledForm(false);
         });
     }
 
@@ -71,14 +67,14 @@ export default (props) => {
                 <div className="p_login__form">
                     <div className="p_login__field_box">
                         <label className="p_login__field_label e-p4 e-p6:md">Usuario:</label>
-                        <input onChange={handleForm}  name="username" className="p_login__field_input e-p2 e-p4:md"></input>
+                        <input disabled={disabledForm} onChange={handleForm}  name="username" className="p_login__field_input e-p2 e-p4:md"></input>
                     </div>
                     <div className="p_login__field_box">
                         <label className="p_login__field_label e-p4 e-p6:md">Contraseña:</label>
-                        <input onChange={handleForm}  name="password" className="p_login__field_input e-p2 e-p4:md" type="password"></input>
+                        <input disabled={disabledForm} onChange={handleForm}  name="password" className="p_login__field_input e-p2 e-p4:md" type="password"></input>
                     </div>
                     <div className="p_login__field_box">
-                        <ButtonComponent theme="primary" action={()=>{loginSubmit()}}>Ingresar</ButtonComponent>
+                        <ButtonComponent theme="primary" action={()=>{loginSubmit()}} isLoading={isLoading}>Ingresar</ButtonComponent>
                     </div>
                 </div>
             </div>

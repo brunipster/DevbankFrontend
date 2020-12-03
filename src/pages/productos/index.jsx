@@ -49,7 +49,7 @@ export default () => {
             <HeaderComponent/>
             <div className="p_productos__list">
                 <div className="p_productos__list_header">
-                    <h2 className="e-h6">Cuentas</h2>
+                    <h2 className="e-h6">Productos</h2>
                     <button onClick={()=>{crear()}} className="p_productos__list_header_new e-p6">Nuevo</button>
                 </div>
                 <table className="p_productos__table">
@@ -64,12 +64,12 @@ export default () => {
                     <tbody className="p_productos__table_body">
 
                             { productos &&
-                                productos.map((p) => {
+                                productos.map((p,index) => {
                                     return (
-                                        <tr value={p.prodId}> 
-                                        <td>{p.prodId}</td>                                     
-                                        <td>{p.prodDescripcion}</td>
-                                        <td><EditIcon height="20px"/></td>                                   
+                                        <tr key={index} value={p.prodId}> 
+                                            <td>{p.prodId}</td>                                     
+                                            <td>{p.prodDescripcion}</td>
+                                            <td><EditIcon height="20px"/></td>                                   
                                         </tr>
                                     )
                                 })

@@ -10,7 +10,7 @@ export default () =>{
             <div className="c_exchange__field">
                 <div className="c_exchange__field_box">
                     <label className="c_exchange__field_label e-p4 e-p6:md">Envio:</label>
-                    <input className="c_exchange__field_input e-p2 e-p4:md" value="1500"></input>
+                    <input onClick={()=>{}} className="c_exchange__field_input e-p2 e-p4:md" defaultValue="1500"></input>
                 </div>
                 <div className="c_exchange__field_currency">
                     <p className="c_exchange__field_currency_text e-p3 e-p4:md">Dolares</p>
@@ -22,7 +22,7 @@ export default () =>{
             <div className="c_exchange__field">
                 <div className="c_exchange__field_box">
                     <label className="c_exchange__field_label e-p4 e-p6:md">Recibo:</label>
-                    <input className="c_exchange__field_input e-p2 e-p4:md" value="1500"></input>
+                    <input onClick={()=>{}} className="c_exchange__field_input e-p2 e-p4:md" defaultValue="1500"></input>
                 </div>
                 <div className="c_exchange__field_currency">
                     <p className="c_exchange__field_currency_text e-p3 e-p4:md">Soles</p>

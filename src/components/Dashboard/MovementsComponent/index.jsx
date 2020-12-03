@@ -11,8 +11,8 @@ export default (props)=>{
             <h3 className="e-p1">Movimientos</h3>
             <ul className="c_movements__list">
                 {
-                    list.map((elm)=>(
-                        <li className="c_movements__item">
+                    list.map((elm, index)=>(
+                        <li key={index} className="c_movements__item">
                             <p className="c_movements__item_description e-p2 e-p5:md">
                                 Pago de Netflix
                                 {elm.processing &&

@@ -35,7 +35,7 @@
   width: 100%;
   margin: 16px 0;
   font-family: "Ubuntu_Regular";
-  font-size: 18px;
+  font-size: 14px;
   border-collapse: collapse;
 }
 
@@ -48,6 +48,11 @@
     border: solid;
     border-width: 1px 0;
   }
+}
+
+.p_cliente__table_body_row_loading {
+  text-align: center;
+  font-size: 40px;
 }
 
 .p_cliente__field_box {
@@ -70,5 +75,17 @@
   text-align: right;
   & button {
     margin: 0 8px;
+  }
+}
+
+.p_cliente__iframe_image{
+  width: 100%;
+  height: 90%;
+}
+
+.p_cliente__modal_body{
+  display: flex;
+  & > div{
+    margin: 0 8px
   }
 }

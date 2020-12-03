@@ -1,0 +1,60 @@
+@import "~@styles/globals.scss";
+
+.c_token__accounts_input_group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 24px 0;
+
+  & label {
+    margin-bottom: 8px;
+  }
+
+  & select {
+    width: 100%;
+    height: 24px;
+    border: none;
+    border-radius: 5px;
+    padding: 0;
+    // border-bottom: 2px solid $color-secondary;
+  }
+
+  & input {
+    width: calc(100% - 4px);
+    height: 24px;
+    border: none;
+    border-radius: 5px;
+    padding: 0;
+    padding-left: 4px;
+    // border-bottom: 2px solid $color-secondary;
+  }
+}
+
+.c_token__footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.c_token__button {
+  padding: 8px 16px;
+  background: $color-secondary;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    background: $color-blue-40;
+  }
+}
+.e-h3 {
+  color: black;
+  text-align: center;
+}
+.btn_atc.c_token__button {
+  font-size: 18px;
+  line-height: 22px;
+  margin: 20px auto;
+  display: flow-root;
+}

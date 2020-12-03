@@ -4,6 +4,7 @@ import SeguridadController from '@services/SeguridadController/';
 import ModalComponent from '@components/ModalComponent/';
 import './index.scss'
 import { Redirect } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 
 const {useState, useEffect} = React;
@@ -12,6 +13,7 @@ export default (props) => {
     const [form, setForm] = useState(false);
     const [showModalError, setShowModalError] = useState(false);
     const [loged, setLoged] = useState(false);
+    const history = useHistory();
 
       const renderRedirect = () => {
         if (loged) {
@@ -19,14 +21,12 @@ export default (props) => {
         }
       }
 
-      const ProtectedComponent = () => {
-        if (loged){
-          return <Redirect to='/dashboard'  />
-        }
-        return <div></div>
+      const redirectDashboard = () => {
+        history.push(props.link);
       }
 
       useEffect(() => {
+
         },[loged])
 
     function loginSubmit() {
@@ -63,9 +63,6 @@ export default (props) => {
 
     return (
         <div className="p_login">
-            {loged &&
-                <Redirect to='/dashboard'  />
-            }
             <div className="p_login__content">
                 <div className="p_login__image">
                     <img src="./images/user.png" alt="login_user"></img>

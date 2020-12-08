@@ -2,7 +2,7 @@ import React , {useEffect} from 'react';
 import AccountsComponent from '@components/Dashboard/AccountsComponent/';
 import MovementsComponent from '@components/Dashboard/MovementsComponent/';
 import TranferComponent from '@components/Dashboard/TransferComponent/';
-// import BalanceComponent from '@ExchangeComponentBalanceComponent/';
+import BalanceComponent from '@components/Dashboard/BalanceComponent/';
 import HeaderComponent from '@components/HeaderComponent/';
 import ExchangeComponent from '@components/Dashboard/ExchangeComponent/';
 import { useHistory } from 'react-router-dom';
@@ -13,7 +13,7 @@ export default () => {
     
     useEffect(() => {
         if(!sessionStorage.getItem("token")){
-            history.push('/login');
+            // history.push('/login');
         }
     },[])
     return (
@@ -30,11 +30,11 @@ export default () => {
                     <div className="transfer">
                         <TranferComponent/>
                     </div>
+                    <div className="balance">
+                        <BalanceComponent/>
+                    </div>
                     <div className="exchange">
                         <ExchangeComponent/>
-                    </div>
-                    <div className="balance">
-                        {/* <BalanceComponent/> */}
                     </div>
                 </div>
             </div>

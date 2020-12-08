@@ -30,7 +30,6 @@
     }
 }
 
-
 .c_transfer__footer{
     width: 100%;
     display: flex;
@@ -48,4 +47,25 @@
     &:hover{
         background: $color-blue-40;
     }
+}
+
+.c_transfer__layer{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color:#bad3db77;
+    border-radius:15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.transfer{
+    position: relative;
+}
+
+.c_transfer__loader{
+    @include loader10($size: 30px, $color: $color-secondary);
 }

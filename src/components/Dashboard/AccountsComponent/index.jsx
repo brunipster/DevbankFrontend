@@ -1,9 +1,67 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import CardComponent from '@components/Dashboard/CardComponent'
+import ModalComponent from '@components/ModalComponent'
+import ButtonComponent from '@components/ButtonComponent'
+import CardSelection from '@components/CardSelection'
+import ListaController from '@services/ListaController/';
+import ClienteController from '@services/ClienteController/';
 import {ReactComponent as ShareIcon} from '@icons/share-link.svg'
 import './index.scss'
 
 export default (props) => {
+    const [form, setForm] = useState({});
+    const [tipoCuenta, setTipoCuenta] = useState([]);
+    const [productos, setProductos] = useState([]);
+    const [showModalAccount, setShowModalAccount] = useState(false);
+    function handleForm(event) {
+        let inputName = event.target.name;
+        let inputValue = event.target.value;
+        setForm({...form, [inputName]: inputValue})
+    }
+
+    useEffect(()=>{
+        ListaController.getTipoCuenta().then(({data}) => {
+            const result = data.data;
+            setTipoCuenta(result);
+        })
+
+        ListaController.getProductos().then(({data}) => {
+            const result = data.data;
+            console.log(result)
+            setProductos(result);
+        })
+    }, [])
+
+    function crearCuenta(){
+        const body = {
+            cuenta: {
+                ctaNuCuenta: "",
+                ctaNuCuentaCci: "",
+                ctaSaldo: 0,
+                ctaEstId: true,
+                tipoCuenta: {
+                    tctaId: form.tipo_cuenta
+                },
+                usuario: {
+                    usuId: form.tipoUsuario
+                },
+                producto: {
+                    prodId: form.producto
+                }
+            }
+            
+        }
+        ClienteController.postRegisterCuenta(body).then((result) => {
+            if(result.status === 200){
+                setForm({});
+                setShowModalAccount(false);
+            }
+        }).catch((error) => {
+            console.log('Error', error);
+            setShowModalAccount(false);
+        });
+    }
+
     return (
         <div className="c_accounts__container">
             <div>
@@ -33,6 +91,7 @@ export default (props) => {
                         </div>
                     </div>
                 </div>
+                <ButtonComponent className="c_accounts__button_create" action={()=>{setShowModalAccount(true)}}>Crear nueva cuenta</ButtonComponent>
                 <div className="c_accounts__card_selected">
                     <CardComponent type={1}/>
                 </div>
@@ -45,6 +104,22 @@ export default (props) => {
                 </div>
                 <div className="c_accounts__card_list_shadow"></div>
             </div>
+            <ModalComponent handleClose={()=>{setShowModalAccount(false)}} show={showModalAccount} title="Agregar Cuenta" footer={
+                <ButtonComponent action={()=>{crearCuenta()}}>Agregar</ButtonComponent>
+            }>
+                <div className="p_cuentas__field_box">                    
+                    <p className="e-p2">Productos</p>
+                    <CardSelection handleSelected={(id)=>{setForm({...form, producto: id})}} colecctions={
+                        productos.map((p)=>{return ({title:p.prodDescripcion, id: p.prodId})})}
+                    />
+                </div>
+                <div className="p_cuentas__field_box">                    
+                    <p className="e-p2">Tipo de Cuenta</p>
+                    <CardSelection handleSelected={(id)=>{setForm({...form, tipo_cuenta: id})}} colecctions={
+                        tipoCuenta.map((p)=>{return ({title:p.tctaDescripcion, id: p.tctaId})})}
+                    />
+                </div>
+            </ModalComponent>
         </div>
     )
 }

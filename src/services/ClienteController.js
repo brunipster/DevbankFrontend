@@ -10,4 +10,7 @@ export default {
   async getListarClientes() {
     return api.get("/cliente/listado", {params: {access_token: sessionStorage.getItem("token")}});
   },
+  async getCuentasByCliente(id) {
+    return api.get("/cuenta/obtener/user/"+id, {params: {access_token: sessionStorage.getItem("token")}});
+  },
 };

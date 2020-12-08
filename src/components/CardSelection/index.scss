@@ -1,0 +1,28 @@
+@import '~@styles/globals.scss';
+
+.c_cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.c_cards__item{
+    width: 30%;
+    text-align: center;
+    background-color: $color-secondary;
+    color:white;
+    height: 50px;
+    padding: 8px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    &.selected {
+        opacity: 0.5;
+    }
+
+    & p{
+        margin: auto;
+    }
+}

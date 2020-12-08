@@ -30,7 +30,7 @@ const PrivateRoute = ({ component: Component, roles, ...rest }) => (
       // if (roles && roles.indexOf(loggedInUser.role) === -1) {
       //   // role not authorised so redirect to home page
       if(!sessionStorage.getItem("token")){ 
-        return <Redirect to={{ pathname: '/login' }} />
+        // return <Redirect to={{ pathname: '/login' }} />
       }
       // }
 

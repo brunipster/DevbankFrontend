@@ -36,11 +36,11 @@
     grid-column: span 1;
     grid-row: span 1;
 }
-.exchange{
+.balance{
     grid-column: span 1;
     grid-row: span 1;
 }
-.balance{
+.exchange{
     grid-row: span 1;
     display: none;
 }
@@ -52,19 +52,19 @@
 }
 
 @media screen and (min-width: $breakpoints-sm){
-    .balance{
+    .exchange{
         display: block;
     }
 }
 
 @media screen and (min-width: $breakpoints-md){
-    .balance{
+    .exchange{
         grid-column: span 3;
     }
 }
 
 @media screen and (min-width: $breakpoints-lg){
-    .balance{
+    .exchange{
         grid-column: span 2;
     }
 }

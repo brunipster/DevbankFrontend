@@ -17,10 +17,11 @@ export default () => {
     const [showModal, setShowModal] = useState(false);
     const [showModalSuccess, setShowModalSuccess] = useState(false);
     const [showModalError, setShowModalError] = useState(false);
-    const [form, setForm] = useState(false);
-    const [tipoCuenta, setTipoCuenta] = useState(false);
-    const [cuentas, setCuentas] = useState(false);
-    const [productos, setProductos] = useState(false);
+    const [form, setForm] = useState({});
+    const [tipoCuenta, setTipoCuenta] = useState([]);
+    const [listClientes, setListClientes] = useState([]);
+    const [cuentas, setCuentas] = useState([]);
+    const [productos, setProductos] = useState([]);
 
     function crear(){
         setShowModal(true);
@@ -29,22 +30,23 @@ export default () => {
     function crearSubmit() {
         const body = {
             cuenta: {
-                ctaNuCuenta: "10000000",
-                ctaNuCuentaCci: "04410000000",
-                ctaSaldo: 1000,
-                ctaEstId: 1,
+                ctaNuCuenta: form.ctaNuCuenta,
+                ctaNuCuentaCci: form.ctaNuCuentaCci,
+                ctaSaldo: form.saldo,
+                ctaEstId: form.tipoCuenta,
                 tipoCuenta: {
-                    tctaId: 1
+                    tctaId: form.tipoCuenta
                 },
                 usuario: {
-                    usuId: 1
+                    usuId: form.tipoUsuario
                 },
                 producto: {
-                    prodId: 1
+                    prodId: form.tipoProducto
                 }
             }
+            
         }
-        ClienteController.postRegister(body).then((result) => {
+        ClienteController.postRegisterCuenta(body).then((result) => {
             if(result.status === 200){
                 setForm({});
                 setShowModal(false);
@@ -64,6 +66,17 @@ export default () => {
     }
 
     useEffect(() => {
+        
+        ClienteController.getListarClientes().then((result)=>{
+            if(result.status == 200){
+                setListClientes(result.data);
+            }
+        }).catch((error)=>{
+            console.log('Error', error);
+        }).finally(()=>{
+            // setIsLoading(false)
+        });
+
         ListaController.getTipoCuenta().then(({data}) => {
             const result = data.data;
             setTipoCuenta(result);
@@ -110,25 +123,12 @@ export default () => {
                                         <td>{c.ctaNuCuentaCci}</td>
                                         <td>{c.ctaSaldo}</td>
                                         <td>{c.tipoCuenta.tctaDescripcion}</td>
-                                        {/* <td>{c.ctaNuCuentaCci}</td>
-                                        <td>{c.ctaNuCuentaCci}</td>
-                                        <td>{c.ctaNuCuentaCci}</td> */}
                                         <td><EditIcon height="20px"/></td> 
                                         
                                         </tr>
                                     )
                                 })
                             }
-                        {/* <tr>
-                            <td>123</td>
-                            <td>Bruno Reyes</td>
-                            <td>brunorebu12@gmail.com</td>
-                            <td>997919677</td>
-                            <td>DNI</td>
-                            <td>70287443</td>
-                            <td>APROBADO</td>
-                            <td><EditIcon height="20px"/></td>
-                        </tr> */}
                     </tbody>
                 </table>
             </div>
@@ -157,12 +157,12 @@ export default () => {
 
                     <div className="p_cuentas__field_box">
                         <label className="p_cuentas__field_label e-p4 e-p6:md">Saldo:</label>
-                        <input name="direccion" onChange={handleForm} className="p_cuentas__field_input e-p2 e-p4:md"></input>
+                        <input name="saldo" onChange={handleForm} className="p_cuentas__field_input e-p2 e-p4:md"></input>
                     </div>
 
                     <div className="p_cuentas__field_box">
                         <label className="p_cuentas__field_label e-p4 e-p6:md">Tipo de Cuenta:</label>
-                        <select name="tipoDocumento" onChange={handleForm} className="p_cuentas__field_select e-p6">
+                        <select name="tipoCuenta" onChange={handleForm} className="p_cuentas__field_select e-p6">
                             <option value="">Seleccionar</option>
                             { tipoCuenta &&
                                 tipoCuenta.map((tpcuenta) => {
@@ -175,7 +175,7 @@ export default () => {
                     </div>
                     <div className="p_cuentas__field_box">
                         <label className="p_cuentas__field_label e-p4 e-p6:md">Productos:</label>
-                        <select name="tipoDocumento" onChange={handleForm} className="p_cuentas__field_select e-p6">
+                        <select name="tipoProducto" onChange={handleForm} className="p_cuentas__field_select e-p6">
                             <option value="">Seleccionar</option>
                             { productos &&
                                 productos.map((p) => {
@@ -188,12 +188,12 @@ export default () => {
                     </div>
                     <div className="p_cuentas__field_box">
                         <label className="p_cuentas__field_label e-p4 e-p6:md">Usuario:</label>
-                        <select name="tipoDocumento" onChange={handleForm} className="p_cuentas__field_select e-p6">
+                        <select name="tipoUsuario" onChange={handleForm} className="p_cuentas__field_select e-p6">
                             <option value="">Seleccionar</option>
-                            { productos &&
-                                productos.map((p) => {
+                            { listClientes &&
+                                listClientes.map((cliente) => {
                                     return (
-                                        <option value={p.prodId}>{p.prodDescripcion}</option>
+                                        <option value={cliente.cliId}>{`${cliente.cliNombres} ${cliente.cliApePaterno}`}</option>
                                     )
                                 })
                             }

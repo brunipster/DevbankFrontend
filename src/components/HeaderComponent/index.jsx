@@ -13,6 +13,7 @@ export default () =>{
                 <Link to='/clientes' className="c_header__navbar_item e-text-medium e-p4">Clientes</Link>
                 <Link to='/agencias' className="c_header__navbar_item e-text-medium e-p4">Agencias</Link>
                 <Link to='/productos' className="c_header__navbar_item e-text-medium e-p4">Productos</Link>
+                <Link to='/cuentas' className="c_header__navbar_item e-text-medium e-p4">Mis Cuentas</Link>
             </nav>
             <ul className="c_header__options">
                 <li  className="c_header__notificacion_icon">

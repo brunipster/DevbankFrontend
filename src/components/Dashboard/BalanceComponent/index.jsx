@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import TransferenciaController from '@services/TransferenciaController/';
+import ClienteController from '@services/ClienteController/';
 import ListaController from '@services/ListaController/';
 import ButtonComponent from '@components/ButtonComponent/';
 import './index.scss'
@@ -10,18 +11,19 @@ export default (props) =>{
     const [isLoading, setIsLoading] = useState(false)
     const [isSuccess, setIsSuccess] = useState(false)
     const [listTipoServicios, setListTipoServicios] = useState([]);
+    const [listCuentas, setListCuentas] = useState([]);
     const [listServicios, setListServicios] = useState([]);
 
-    function submitTransferencia() {
+    function submitPagar() {
         const body = {
             trfrnConcepto: form.concepto,
-            trfrnCuentaReceptora: form.cuenta_destino,
-            trfrnCuentaRemitente: form.cuenta_origen,
+            trfrnCuentaReceptora: form.cuenta,
+            trfrnCuentaRemitente: form.cuenta,
             trfrnMonto: form.monto,
-            trfrnServicio: 0,
+            trfrnServicio:form.servicio,
             trfrnTipoMovimientoDes: "",
-            trfrnTipoMovimientoId: 0,
-            trfrnTipoServicio: 0
+            trfrnTipoMovimientoId: 1,
+            trfrnTipoServicio: form.tipo_servicio
         }
         setIsLoading(true);
         TransferenciaController.postRegister(body).then(()=>{
@@ -47,7 +49,8 @@ export default (props) =>{
     function handleTipoServicio(tipo) {
       setListServicios([]);
       ListaController.getServicios(tipo).then(({data}) => {
-        setListServicios(data);
+          console.log(data.data)
+        setListServicios(data.data);
       }).catch(error=> console.log(error)).finally()
     }
 
@@ -63,12 +66,29 @@ export default (props) =>{
             setListTipoServicios(data.data)
         }
       }).catch(error=> console.log(error)).finally()
+      console.log("sessionStorage.getItem",sessionStorage.getItem("user_id"))
+      ClienteController.getCuentas().then(result =>{
+        const resultado = result.data.data;
+        setListCuentas(resultado);
+        console.log(result);
+      })
     },[])
 
     return (
         <div className="c_transfer__container">
             <h3 className="e-p1">Pagos de Servicios</h3>
-
+            <div className="c_transfer__accounts_input_group">
+                <label className="e-p5">Cuenta</label>
+                <select name="cuenta" onChange={handleForm} className="c_transfer__select e-p6">
+                    <option>Seleccione una Cuenta</option> 
+                    {listCuentas.length > 0 &&
+                        listCuentas.map((serv,index) =>{
+                            return (<option key={index} value={serv.ctaNuCuenta}>{serv.ctaNuCuenta}</option> )
+                          }
+                        )
+                    }
+                </select>
+            </div>
             <div className="c_transfer__accounts_input_group">
                 <label className="e-p5">Tipo de Servicios</label>
                 <select name="tipo_servicio" onChange={handleForm} className="c_transfer__select e-p6">
@@ -85,12 +105,12 @@ export default (props) =>{
             <div className="c_transfer__accounts_input_group">
                 <label className="e-p5">Servicios</label>
                 <select name="servicio" onChange={handleForm} className="c_transfer__select e-p6">
-                    {listServicios.length > 0 ?
-                        listServicios.map(serv =>
-                            <option>{serv.serv_descripcion}</option> 
+                    <option>Seleccionar un Servicio</option> 
+                    {
+                        listServicios.map((serv,index) =>{
+                            return(<option  key={index} value={serv.servId}>{serv.servNombre}</option>)}
                         )
-                        :
-                        <option>Seleccionar un Tipo de Servicio</option> 
+                        
                     }
                 </select>
             </div>
@@ -107,7 +127,7 @@ export default (props) =>{
 
             <div className="c_transfer__footer">
                 <input  name="terminos" onChange={handleForm} type="checkbox" name="" id=""/><label className="e-p4 e-p6:md">Acepto los terminos y condiciones</label>
-                <button className="c_transfer__button e-p3 e-p6:md" action={()=>{submitTransferencia()}} isLoading={isLoading}>Pagar</button>
+                <ButtonComponent className="c_transfer__button e-p3 e-p6:md" action={()=>{submitPagar()}} isLoading={isLoading}>Pagar</ButtonComponent>
             </div>
             {(isLoading || isSuccess) &&
                 <div className="c_transfer__layer">

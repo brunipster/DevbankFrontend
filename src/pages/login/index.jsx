@@ -1,7 +1,9 @@
 import React from 'react';
 import ButtonComponent from '@components/ButtonComponent/';
 import SeguridadController from '@services/SeguridadController/';
+import ClienteController from '@services/ClienteController/';
 import ModalComponent from '@components/ModalComponent/';
+import jwt from 'jwt-decode'
 import './index.scss'
 import { useHistory } from 'react-router-dom';
 
@@ -39,7 +41,13 @@ export default (props) => {
                 setForm({});
                 console.log(result);
                 sessionStorage.setItem("token", result.data.access_token);
-                redirectDashboard();
+                ClienteController.getByUsername(form.username).then(result => {
+                    const user = result.data.data;
+                    console.log(user);
+                    sessionStorage.setItem("user_id", user.usuId);
+                    sessionStorage.setItem("rol", user.roles[0].rolId);
+                    redirectDashboard();
+                })
             }
         }).catch((error) => {
             console.log('Error', error);

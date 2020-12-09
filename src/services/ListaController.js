@@ -19,13 +19,10 @@ export default {
   async getCuentas() {
     return api.get("/cuenta/listar", {params: {access_token: sessionStorage.getItem("token")}});
   },
-  async getCuentas() {
-    return api.get("/cuenta/listar", {params: {access_token: sessionStorage.getItem("token")}});
-  },
   async getTiposServicios() {
     return api.get("/listar/tipoServicio", {params: {access_token: sessionStorage.getItem("token")}});
   },
   async getServicios(id) {
-    return api.get("/listar/servicio/"+id, {params: {access_token: sessionStorage.getItem("token")}});
+    return api.get("/listar/servicio/"+id, {params: {tserv: id , access_token: sessionStorage.getItem("token")}});
   },
 };

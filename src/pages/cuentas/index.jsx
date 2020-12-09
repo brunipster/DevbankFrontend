@@ -29,7 +29,6 @@ export default () => {
 
     function crearSubmit() {
         const body = {
-            cuenta: {
                 ctaNuCuenta: form.ctaNuCuenta,
                 ctaNuCuentaCci: form.ctaNuCuentaCci,
                 ctaSaldo: form.saldo,
@@ -45,7 +44,6 @@ export default () => {
                 }
             }
             
-        }
         ClienteController.postRegisterCuenta(body).then((result) => {
             if(result.status === 200){
                 setForm({});

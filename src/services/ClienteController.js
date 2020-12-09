@@ -11,6 +11,12 @@ export default {
     return api.get("/cliente/listado", {params: {access_token: sessionStorage.getItem("token")}});
   },
   async getCuentasByCliente(id) {
-    return api.get("/cuenta/obtener/user/"+id, {params: {access_token: sessionStorage.getItem("token")}});
+    return api.get("/cuenta/obtener/user/"+id, {params: {usuId:id,access_token: sessionStorage.getItem("token")}});
+  },
+  async getCuentas() {
+    return api.get("/cuenta/listar", {params: {access_token: sessionStorage.getItem("token")}});
+  },
+  async getByUsername(username) {
+    return api.get("/usuario/obtener/"+username, {params: {username,access_token: sessionStorage.getItem("token")}});
   },
 };

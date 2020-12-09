@@ -33,10 +33,9 @@ export default (props) => {
     }, [])
 
     function crearCuenta(){
-        const body = {
-            cuenta: {
-                ctaNuCuenta: "",
-                ctaNuCuentaCci: "",
+        const body =  {
+                ctaNuCuenta: "0011013802000546489",
+                ctaNuCuentaCci: "0111380200054648952",
                 ctaSaldo: 0,
                 ctaEstId: true,
                 tipoCuenta: {
@@ -49,8 +48,6 @@ export default (props) => {
                     prodId: form.producto
                 }
             }
-            
-        }
         ClienteController.postRegisterCuenta(body).then((result) => {
             if(result.status === 200){
                 setForm({});

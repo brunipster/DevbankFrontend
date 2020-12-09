@@ -50,7 +50,7 @@ export default () => {
             <div className="p_productos__list">
                 <div className="p_productos__list_header">
                     <h2 className="e-h6">Productos</h2>
-                    <button onClick={()=>{crear()}} className="p_productos__list_header_new e-p6">Nuevo</button>
+                    {/* <button onClick={()=>{crear()}} className="p_productos__list_header_new e-p6">Nuevo</button> */}
                 </div>
                 <table className="p_productos__table">
                     <thead className="p_productos__table_head">

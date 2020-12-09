@@ -51,7 +51,7 @@ export default () => {
             ],
             usuClave: form.clave,
             usuEstado: 1,
-            usuNombre: `${form.nombres} ${form.apellidoPaterno} ${form.apellidoMaterno}`
+            usuNombre: `${form.username}`
         }
         ClienteController.postRegister(body).then((result) => {
             if(result.status === 200){
@@ -164,6 +164,10 @@ export default () => {
             >
                 <div className="p_cliente__modal_body">
                     <form>
+                        <div className="p_cliente__field_box">
+                            <label className="p_cliente__field_label e-p4 e-p6:md">Usuario:</label>
+                            <input name="username" onChange={handleForm} className="p_cliente__field_input e-p2 e-p4:md"></input>
+                        </div>
                         <div className="p_cliente__field_box">
                             <label className="p_cliente__field_label e-p4 e-p6:md">Nombres:</label>
                             <input name="nombres" onChange={handleForm} className="p_cliente__field_input e-p2 e-p4:md"></input>

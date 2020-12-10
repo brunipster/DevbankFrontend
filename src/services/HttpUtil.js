@@ -18,7 +18,7 @@ export default httpUtil;
 
 var credentials = btoa("bancaElectronica" + ':' + "banca");
 export const httpUtilOauth = axios.create({
-  // baseURL: "http://138.68.57.178/ciber-banca/api",
+  // baseURL: "http://138.68.57.178/ciber-banca/",
   baseURL: "http://localhost:8080/",
   headers: {
     "Content-Type": "application/x-www-form-urlencoded;charset-UTF-8",
